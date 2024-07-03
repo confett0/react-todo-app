@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import './App.css'
+import Header from './components/Header'
 import TodoList from './components/TodoList'
 
 function App() {
 
   return (
     <>
-      <h1>Todo</h1>
+      <Header />
       <TodoList />
     </>
   )

@@ -27,7 +27,6 @@ body {
   justify-content: center;
   font-family: 'Josefin Sans Variable', sans-serif;
   min-height: 100vh;
-  padding: 3rem;
   width: 100vw;
 }
 
@@ -37,6 +36,18 @@ body.dark {
 
 #root {
   width: min(90vw, 30rem);
+}
+
+header {
+  align-items: center;
+  display: flex;
+  height: 8rem;
+}
+
+.logo {
+  color: #fff;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
 }
 
 .todo-wrap {
