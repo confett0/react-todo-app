@@ -5,6 +5,11 @@ import TodoItem from "./TodoItem";
 export default function TodoList() {
   const [inputText, setInputText] = useState("");
   const [todoList, setTodoList] = useState(initialData);
+  const [displayedList, setDisplayedList] = useState(todoList)
+
+  const activeTodoList = todoList.filter(todo => !todo.completed)
+  const completedTodoList = todoList.filter(todo => todo.completed)
+  const activeTodoNumber = activeTodoList.length
 
   const handleInputChange = (e) => setInputText(e.target.value);
   const handleSubmit = (e) => {
@@ -43,7 +48,7 @@ export default function TodoList() {
         />
       </form>
       <div className="todo-list">
-        {todoList.map((todo) => (
+        {displayedList.map((todo) => (
           <TodoItem
             key={todo.id}
             id={todo.id}
@@ -51,6 +56,12 @@ export default function TodoList() {
             handleChange={handleCompleteTask}
           />
         ))}
+        <div className="todo-list-footer">
+            <p>{activeTodoNumber} items left</p>
+            <button onClick={() => setDisplayedList(todoList)}>All</button>
+            <button onClick={() => setDisplayedList(activeTodoList)}>Active</button>
+            <button onClick={() => setDisplayedList(completedTodoList)}>Completed</button>
+        </div>
       </div>
     </div>
   );

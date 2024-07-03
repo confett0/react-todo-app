@@ -59,7 +59,7 @@ input[type="text"] {
   border-radius: 0.2rem;
   font-family: 'Josefin Sans Variable', sans-serif;
   font-size: 1rem;
-  padding: 1rem;
+  padding: 1.2rem;
   width: 100%;
 }
 
@@ -78,4 +78,8 @@ input[type="text"] {
   gap: 1rem;
   padding: 1rem;
   width: 100%;
+}
+
+.todo-list-footer {
+  padding: 1rem;
 }
