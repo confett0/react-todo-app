@@ -1,5 +1,6 @@
 import { useState } from "react";
 import initialData from "../initialData";
+import TodoItem from "./TodoItem";
 
 export default function TodoList() {
   const [inputText, setInputText] = useState("");
@@ -25,7 +26,7 @@ export default function TodoList() {
           placeholder="Create a new todo... "
         />
       </form>
-      
+        {todoList.map(todo => <TodoItem key={todo.text} todo={todo} />)}
     </div>
   );
 }
