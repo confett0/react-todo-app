@@ -11,22 +11,28 @@ export default function TodoList() {
     e.preventDefault();
     setTodoList((prevList) => [
       ...prevList,
-      { text: inputText, completed: false, id: Math.floor(Math.random() * 100000) },
+      {
+        text: inputText,
+        completed: false,
+        id: Math.floor(Math.random() * 100000),
+      },
     ]);
   };
 
   const handleCompleteTask = (taskId) => {
-    setTodoList(todoList.map(todo => {
+    setTodoList(
+      todoList.map((todo) => {
         if (todo.id === taskId) {
-            return {...todo, completed: !todo.completed}
+          return { ...todo, completed: !todo.completed };
         } else {
-            return todo
+          return todo;
         }
-    }))
-  }
+      })
+    );
+  };
 
   return (
-    <div className="todo-list">
+    <div className="todo-wrap">
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
@@ -36,7 +42,15 @@ export default function TodoList() {
           placeholder="Create a new todo... "
         />
       </form>
-        {todoList.map(todo => <TodoItem key={todo.text} todo={todo} handleChange={handleCompleteTask} />)}
+      <div className="todo-list">
+        {todoList.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            todo={todo}
+            handleChange={handleCompleteTask}
+          />
+        ))}
+      </div>
     </div>
   );
 }

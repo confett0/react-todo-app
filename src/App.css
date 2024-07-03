@@ -26,7 +26,6 @@ body {
   display: flex;
   justify-content: center;
   font-family: 'Josefin Sans Variable', sans-serif;
-  font-size: 1.2rem;
   min-height: 100vh;
   padding: 3rem;
   width: 100vw;
@@ -40,7 +39,7 @@ body.dark {
   width: min(90vw, 30rem);
 }
 
-.todo-list {
+.todo-wrap {
   width: 100%;
 }
 
@@ -53,8 +52,19 @@ input[type="text"] {
   width: 100%;
 }
 
+.todo-list {
+  background-color: #fff;
+  border-radius: 0.2rem;
+  box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+}
+
 .todo-item {
   align-items: center;
+  border-bottom: 1px solid var(--very-light-gray-blue);
+  color: var(--very-dark-gray-blue);
   display: flex;
+  gap: 1rem;
+  padding: 1rem;
   width: 100%;
 }
