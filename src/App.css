@@ -39,3 +39,16 @@ body.dark {
 #root {
   width: min(90vw, 30rem);
 }
+
+.todo-list {
+  width: 100%;
+}
+
+input {
+  border: none;
+  border-radius: 0.2rem;
+  font-family: 'Josefin Sans Variable', sans-serif;
+  font-size: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
