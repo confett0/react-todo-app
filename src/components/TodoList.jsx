@@ -58,9 +58,12 @@ export default function TodoList() {
         ))}
         <div className="todo-list-footer">
             <p>{activeTodoNumber} items left</p>
-            <button onClick={() => setDisplayedList(todoList)}>All</button>
-            <button onClick={() => setDisplayedList(activeTodoList)}>Active</button>
-            <button onClick={() => setDisplayedList(completedTodoList)}>Completed</button>
+            <div className="filter-button-wrap">
+                <button onClick={() => setDisplayedList(todoList)}>All</button>
+                <button onClick={() => setDisplayedList(activeTodoList)}>Active</button>
+                <button onClick={() => setDisplayedList(completedTodoList)}>Completed</button>
+            </div>
+            <button>Clear completed</button>
         </div>
       </div>
     </div>

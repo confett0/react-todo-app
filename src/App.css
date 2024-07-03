@@ -81,5 +81,22 @@ input[type="text"] {
 }
 
 .todo-list-footer {
+  align-items: center;
+  color: var(--dark-gray-blue);
+  display: flex;
+  justify-content: space-between;
   padding: 1rem;
+}
+
+.filter-button-wrap {
+  display: flex;
+  gap: 1rem;
+}
+
+.todo-list-footer button {
+  background: transparent;
+  border: none;
+  color: var(--dark-gray-blue);
+  cursor: pointer;
+  font-family: 'Josefin Sans Variable', sans-serif;
 }
