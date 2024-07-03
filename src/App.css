@@ -1,6 +1,33 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+  /* light theme */
+  --light-gray: hsl(0, 0%, 98%);
+  --very-light-gray-blue: hsl(236, 33%, 92%);
+  --light-gray-blue: hsl(233, 11%, 84%);
+  --dark-gray-blue: hsl(236, 9%, 61%);
+  --very-dark-gray-blue: hsl(235, 19%, 35%);
+  /* dark theme */
+  --very-dark-blue: hsl(235, 21%, 11%);
+  --very-dark-desat-blue: hsl(235, 24%, 19%);
+  --light-grayish-blue: hsl(234, 39%, 85%);
+  --light-grayish-blue-hover: hsl(236, 33%, 92%);
+  --grayish-blue: hsl(234, 11%, 52%);
+  --dark-grayish-blue: hsl(233, 14%, 35%);
+  --very-dark-grayish-blue: hsl(237, 14%, 26%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #fff url("./bg-desktop-light.jpg") no-repeat top center;
+  font-size: 1.2rem;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+body.dark {
+  background: var(--very-dark-blue) url("./bg-desktop-dark.jpg") no-repeat top center;
 }
