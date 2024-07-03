@@ -23,11 +23,19 @@
 
 body {
   background: #fff url("./bg-desktop-light.jpg") no-repeat top center;
+  display: flex;
+  justify-content: center;
+  font-family: 'Josefin Sans Variable', sans-serif;
   font-size: 1.2rem;
   min-height: 100vh;
+  padding: 3rem;
   width: 100vw;
 }
 
 body.dark {
   background: var(--very-dark-blue) url("./bg-desktop-dark.jpg") no-repeat top center;
+}
+
+#root {
+  width: min(90vw, 30rem);
 }
