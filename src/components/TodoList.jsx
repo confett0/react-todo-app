@@ -20,15 +20,15 @@ export default function TodoList() {
   };
 
   const handleCompleteTask = (taskId) => {
-    setTodoList(
-      todoList.map((todo) => {
+      const newList = todoList.map((todo) => {
         if (todo.id === taskId) {
+            console.log(todo)
           return { ...todo, completed: !todo.completed };
         } else {
           return todo;
         }
       })
-    );
+      setTodoList(newList)
   };
 
   return (
@@ -45,7 +45,8 @@ export default function TodoList() {
       <div className="todo-list">
         {todoList.map((todo) => (
           <TodoItem
-            key={todo.text}
+            key={todo.id}
+            id={todo.id}
             todo={todo}
             handleChange={handleCompleteTask}
           />

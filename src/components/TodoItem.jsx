@@ -5,7 +5,7 @@ export default function TodoItem({ todo, handleChange }) {
         type="checkbox"
         name="completed"
         checked={todo.completed}
-        onChange={handleChange}
+        onChange={() => handleChange(todo.id)}
       />
       <p>{todo.text}</p>
     </div>
