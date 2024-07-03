@@ -84,6 +84,7 @@ input[type="text"] {
   align-items: center;
   color: var(--dark-gray-blue);
   display: flex;
+  font-size: 0.8rem;
   justify-content: space-between;
   padding: 1rem;
 }

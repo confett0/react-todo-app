@@ -5,11 +5,21 @@ import TodoItem from "./TodoItem";
 export default function TodoList() {
   const [inputText, setInputText] = useState("");
   const [todoList, setTodoList] = useState(initialData);
-  const [displayedList, setDisplayedList] = useState(todoList)
+  const [displayedTodos, setDisplayedTodos] = useState("all");
 
-  const activeTodoList = todoList.filter(todo => !todo.completed)
-  const completedTodoList = todoList.filter(todo => todo.completed)
-  const activeTodoNumber = activeTodoList.length
+  const activeTodoList = todoList.filter((todo) => !todo.completed);
+  const completedTodoList = todoList.filter((todo) => todo.completed);
+  const activeTodoNumber = activeTodoList.length;
+
+  let displayedList;
+
+  if (displayedTodos === "all") {
+    displayedList = todoList;
+  } else if (displayedTodos === "active") {
+    displayedList = activeTodoList;
+  } else if (displayedTodos === "completed") {
+    displayedList = completedTodoList;
+  }
 
   const handleInputChange = (e) => setInputText(e.target.value);
   const handleSubmit = (e) => {
@@ -25,15 +35,19 @@ export default function TodoList() {
   };
 
   const handleCompleteTask = (taskId) => {
-      const newList = todoList.map((todo) => {
-        if (todo.id === taskId) {
-            console.log(todo)
-          return { ...todo, completed: !todo.completed };
-        } else {
-          return todo;
-        }
-      })
-      setTodoList(newList)
+    const newList = todoList.map((todo) => {
+      if (todo.id === taskId) {
+        return { ...todo, completed: !todo.completed };
+      } else {
+        return todo;
+      }
+    });
+    setTodoList(newList);
+  };
+
+  const clearCompleted = () => {
+    setTodoList(activeTodoList);
+    setDisplayedTodos("all");
   };
 
   return (
@@ -57,13 +71,13 @@ export default function TodoList() {
           />
         ))}
         <div className="todo-list-footer">
-            <p>{activeTodoNumber} items left</p>
-            <div className="filter-button-wrap">
-                <button onClick={() => setDisplayedList(todoList)}>All</button>
-                <button onClick={() => setDisplayedList(activeTodoList)}>Active</button>
-                <button onClick={() => setDisplayedList(completedTodoList)}>Completed</button>
-            </div>
-            <button>Clear completed</button>
+          <p>{activeTodoNumber} items left</p>
+          <div className="filter-button-wrap">
+            <button onClick={() => setDisplayedTodos("all")}>All</button>
+            <button onClick={() => setDisplayedTodos("active")}>Active</button>
+            <button onClick={() => setDisplayedTodos("completed")}>Completed</button>
+          </div>
+          <button onClick={clearCompleted}>Clear completed</button>
         </div>
       </div>
     </div>
