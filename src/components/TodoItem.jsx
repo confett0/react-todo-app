@@ -8,7 +8,7 @@ export default function TodoItem({ todo, handleChange, deleteTodo }) {
         onChange={() => handleChange(todo.id)}
       />
       <p>{todo.text}</p>
-      <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+      <button className="del-button" onClick={() => deleteTodo(todo.id)}><img src="./icon-cross.svg"/></button>
     </div>
   );
 }
