@@ -80,6 +80,10 @@ input[type="text"] {
   margin: 1.5rem 0;
 }
 
+body.dark .todo-list, body.dark input[type="text"] {
+  background-color: var(--very-dark-desat-blue);
+}
+
 .todo-item {
   align-items: center;
   border-bottom: 1px solid var(--very-light-gray-blue);
@@ -99,6 +103,7 @@ input[type="text"] {
   height: 1.3rem;
   color: hsl(192, 100%, 67%);
   vertical-align: middle;
+  appearance: none;
   -webkit-appearance: none;
   background: none;
   border: 0;
