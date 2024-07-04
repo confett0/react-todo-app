@@ -87,7 +87,7 @@ export default function TodoList() {
           />
         ))}
         <div className="todo-list-footer">
-          <p>{activeTodoNumber} items left</p>
+          <p>{activeTodoNumber} {activeTodoNumber === 1 ? "item" : "items"} left</p>
           <div className="filter-button-wrap">
             <TabButtons
               name="All"
