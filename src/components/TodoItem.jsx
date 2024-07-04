@@ -1,4 +1,4 @@
-export default function TodoItem({ todo, handleChange }) {
+export default function TodoItem({ todo, handleChange, deleteTodo }) {
   return (
     <div className="todo-item">
       <input
@@ -8,6 +8,7 @@ export default function TodoItem({ todo, handleChange }) {
         onChange={() => handleChange(todo.id)}
       />
       <p>{todo.text}</p>
+      <button onClick={() => deleteTodo(todo.id)}>Delete</button>
     </div>
   );
 }

@@ -101,3 +101,7 @@ input[type="text"] {
   cursor: pointer;
   font-family: 'Josefin Sans Variable', sans-serif;
 }
+
+.todo-list-footer button.active {
+  color: aqua;
+}

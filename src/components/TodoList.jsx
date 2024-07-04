@@ -1,27 +1,19 @@
 import { useState } from "react";
 import initialData from "../initialData";
 import TodoItem from "./TodoItem";
+import TabButtons from "./TabButtons";
 
 export default function TodoList() {
   const [inputText, setInputText] = useState("");
   const [todoList, setTodoList] = useState(initialData);
-  const [displayedTodos, setDisplayedTodos] = useState("all");
+  const [activeTabIndex, setActiveTabIndex] = useState("0");
 
-  const activeTodoList = todoList.filter((todo) => !todo.completed);
-  const completedTodoList = todoList.filter((todo) => todo.completed);
-  const activeTodoNumber = activeTodoList.length;
-
-  let displayedList;
-
-  if (displayedTodos === "all") {
-    displayedList = todoList;
-  } else if (displayedTodos === "active") {
-    displayedList = activeTodoList;
-  } else if (displayedTodos === "completed") {
-    displayedList = completedTodoList;
-  }
+  const FILTER_ALL = "0";
+  const FILTER_ACTIVE = "1";
+  const FILTER_COMPLETED = "2";
 
   const handleInputChange = (e) => setInputText(e.target.value);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setTodoList((prevList) => [
@@ -32,6 +24,7 @@ export default function TodoList() {
         id: Math.floor(Math.random() * 100000),
       },
     ]);
+    setInputText("");
   };
 
   const handleCompleteTask = (taskId) => {
@@ -46,9 +39,31 @@ export default function TodoList() {
   };
 
   const clearCompleted = () => {
-    setTodoList(activeTodoList);
-    setDisplayedTodos("all");
+    setTodoList(prevList => prevList.filter(todo => !todo.completed));
+    setActiveTabIndex(FILTER_ALL); // display all todos
   };
+
+  const filterTodos = (id) => {
+    setActiveTabIndex(id);
+  };
+
+  const getDisplayedList = () => {
+    switch (activeTabIndex) {
+      case FILTER_ACTIVE:
+        return todoList.filter((todo) => !todo.completed);
+      case FILTER_COMPLETED:
+        return todoList.filter((todo) => todo.completed);
+      default:
+        return todoList;
+    }
+  };
+
+  const deleteTodo = (todoId) => {
+    setTodoList(prevList => prevList.filter(todo => todo.id !== todoId))
+  }
+
+  const activeTodoNumber = todoList.filter((todo) => !todo.completed).length;
+  const displayedList = getDisplayedList();
 
   return (
     <div className="todo-wrap">
@@ -68,14 +83,30 @@ export default function TodoList() {
             id={todo.id}
             todo={todo}
             handleChange={handleCompleteTask}
+            deleteTodo={deleteTodo}
           />
         ))}
         <div className="todo-list-footer">
           <p>{activeTodoNumber} items left</p>
           <div className="filter-button-wrap">
-            <button onClick={() => setDisplayedTodos("all")}>All</button>
-            <button onClick={() => setDisplayedTodos("active")}>Active</button>
-            <button onClick={() => setDisplayedTodos("completed")}>Completed</button>
+            <TabButtons
+              name="All"
+              id={FILTER_ALL}
+              active={activeTabIndex === FILTER_ALL}
+              handleClick={filterTodos}
+            />
+            <TabButtons
+              name="Active"
+              id={FILTER_ACTIVE}
+              active={activeTabIndex === FILTER_ACTIVE}
+              handleClick={filterTodos}
+            />
+            <TabButtons
+              name="Completed"
+              id={FILTER_COMPLETED}
+              active={activeTabIndex === FILTER_COMPLETED}
+              handleClick={filterTodos}
+            />
           </div>
           <button onClick={clearCompleted}>Clear completed</button>
         </div>
