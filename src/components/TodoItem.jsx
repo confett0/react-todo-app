@@ -1,6 +1,6 @@
 export default function TodoItem({ todo, handleChange, deleteTodo }) {
   return (
-    <div className="todo-item">
+    <div className={todo.completed ? "todo-item completed" : "todo-item"}>
       <input
         type="checkbox"
         name="completed"

@@ -83,6 +83,11 @@ input[type="text"] {
   width: 100%;
 }
 
+.completed {
+  color: var(--very-light-gray-blue);
+  text-decoration: line-through;
+}
+
 .del-button {
   background: transparent;
   border: none;
