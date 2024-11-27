@@ -96,6 +96,10 @@ body.dark .todo-list, body.dark input[type="text"] {
   width: 100%;
 }
 
+body.dark .todo-item {
+  color: var(--light-grayish-blue);
+}
+
 /* Checkbox styling */
 
 [type=checkbox] {

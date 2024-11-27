@@ -1,19 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css'
 import Header from './components/Header'
 import TodoList from './components/TodoList'
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [isDarkMode]); 
 
   const toggleDarkMode = () => {
-    setDarkMode(prev => !prev)
-    document.body.classList.toggle('dark');
+    setIsDarkMode(prev => !prev)
   }
 
   return (
     <>
-      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <TodoList />
     </>
   )
