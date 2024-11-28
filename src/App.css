@@ -100,6 +100,10 @@ body.dark .todo-item {
   color: var(--light-grayish-blue);
 }
 
+.todo-item.dragging {
+  opacity: 0.5;
+}
+
 /* Checkbox styling */
 
 [type=checkbox] {

@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import initialData from "../initialData";
 import TodoItem from "./TodoItem";
 import TabButtons from "./TabButtons";
 
 export default function TodoList() {
+  const dragItem = useRef();
+  const dragOverItem = useRef();
+
   const [inputText, setInputText] = useState("");
   const [todoList, setTodoList] = useState(initialData);
   const [activeTabIndex, setActiveTabIndex] = useState("0");
@@ -65,6 +68,27 @@ export default function TodoList() {
   const activeTodoNumber = todoList.filter((todo) => !todo.completed).length;
   const displayedList = getDisplayedList();
 
+  // Drag and drop
+
+  const dragStart = (e, index) => dragItem.current = index;
+  const dragEnter = (e, index) => dragOverItem.current = index;
+  const drop = () => {
+    const dragItemIndex = dragItem.current;
+    const dragOverItemIndex = dragOverItem.current;
+
+    if (dragItemIndex === dragOverItemIndex) return; // Prevent unnecessary reordering
+
+    const todoListCopy = [...todoList];
+    const draggedItemContent = todoListCopy[dragItemIndex];
+
+    todoListCopy.splice(dragItemIndex, 1);
+    todoListCopy.splice(dragOverItemIndex, 0, draggedItemContent);
+
+    dragItem.current = null;
+    dragOverItem.current = null;
+    setTodoList(todoListCopy);
+  }
+
   return (
     <div className="todo-wrap">
       <form onSubmit={(e) => handleSubmit(e)}>
@@ -77,13 +101,16 @@ export default function TodoList() {
         />
       </form>
       <div className="todo-list">
-        {displayedList.map((todo) => (
+        {displayedList.map((todo, index) => (
           <TodoItem
             key={todo.id}
             id={todo.id}
             todo={todo}
             handleChange={handleCompleteTask}
             deleteTodo={deleteTodo}
+            dragStart={(e) => dragStart(e, index)}
+            dragEnter={(e) => dragEnter(e, index)}
+            drop={drop}
           />
         ))}
         <div className="todo-list-footer">
