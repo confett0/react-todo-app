@@ -23,7 +23,7 @@
 }
 
 body {
-  background: #fff url("./public/bg-desktop-light.jpg") no-repeat top center;
+  background: #fff url("https://todo-app-react-frontendmentor.netlify.app/bg-desktop-light.jpg") no-repeat top center;
   display: flex;
   justify-content: center;
   font-family: 'Josefin Sans Variable', sans-serif;
@@ -32,7 +32,7 @@ body {
 }
 
 body.dark {
-  background: var(--very-dark-blue) url("./bg-desktop-dark.jpg") no-repeat top center;
+  background: var(--very-dark-blue) url("https://todo-app-react-frontendmentor.netlify.app/bg-desktop-dark.jpg") no-repeat top center;
 }
 
 #root {
