@@ -5,11 +5,16 @@ The app allows users to add, complete, delete and filter tasks. Users can also r
 
 # Demo
 
-[Live Demo](https://harry-potter-memory-card.netlify.app/)
+[Live Demo](https://todo-app-react-frontendmentor.netlify.app/)
 
 # Project Screenshots
 
+## Light mode
+
 ![Light mode screenshot](public/screenshot-1.png)
+
+## Dark mode
+
 ![Dark mode screenshot](public/screenshot-2.png)
 
 

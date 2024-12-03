@@ -88,7 +88,7 @@ body.dark .todo-list, body.dark input[type="text"] {
   align-items: center;
   border-bottom: 1px solid var(--very-light-gray-blue);
   color: var(--very-dark-gray-blue);
-  cursor: pointer;
+  cursor: drag;
   display: flex;
   gap: 1rem;
   height: 4rem;
