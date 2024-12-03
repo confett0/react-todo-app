@@ -9,8 +9,8 @@ The app allows users to add, complete, delete and filter tasks. Users can also r
 
 # Project Screenshots
 
-![Light mode screenshot](public/screenshot-1.jpg)
-![Dark mode screenshot](public/screenshot-2.jpg)
+![Light mode screenshot](public/screenshot-1.png)
+![Dark mode screenshot](public/screenshot-2.png)
 
 
 

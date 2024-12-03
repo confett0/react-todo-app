@@ -23,7 +23,7 @@
 }
 
 body {
-  background: #fff url("./bg-desktop-light.jpg") no-repeat top center;
+  background: #fff url("./public/bg-desktop-light.jpg") no-repeat top center;
   display: flex;
   justify-content: center;
   font-family: 'Josefin Sans Variable', sans-serif;
